@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyHouseVPN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='style/logo.ico') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='style/logo.png') }}" alt="Logo" class="logo">
+            </a>
+            <h1>MyHouseVPN</h1>
+            <div class="menu-icon" id="menu-icon" onclick="toggleNav()">
+                <img src="{{ url_for('static', filename='icons/menu.svg') }}" alt="Menu" class="icon menu">
+                <img src="{{ url_for('static', filename='icons/close.svg') }}" alt="Close" class="icon close">
+            </div>
+        </div>
+        <nav id="navbar">
+            <a href="{{ url_for('duckdns') }}" class="text-white mr-4">
+                <img src="{{ url_for('static', filename='icons/start.svg') }}" alt="Start Icon" class="nav-icon">Getting Started
+            </a>
+            <a href="{{ url_for('downloads') }}" class="text-white">
+                <img src="{{ url_for('static', filename='icons/download.svg') }}" alt="Download Icon" class="nav-icon">Downloads
+            </a>
+            <a href="{{ url_for('vpn') }}" class="text-white">
+                <img src="{{ url_for('static', filename='icons/vpn.svg') }}" alt="VPN Icon" class="nav-icon">How to use it?
+            </a>
+        </nav>
+    </header>
+    <div class="overlay" id="overlay"></div>
+    <main>
+        <div class="button-container">
+            <div class="button-wrapper">
+                <button onclick="openURL(10000, 'https')" title="Custom your MyHouseVPN device. Change your Timezone, Password...">
+                    <img src="{{ url_for('static', filename='icons/settings.svg') }}" alt="Settings Icon" class="button-icon">
+                    Settings
+                </button>
+                <img src="{{ url_for('static', filename='icons/question.svg') }}" alt="Question Icon" class="question-icon" onclick="showAlert('Customize your MyHouseVPN device settings, including timezone and password.')">
+            </div>
+            <div class="button-wrapper">
+                <button onclick="openURL(51821, 'http')" title="Manage all your devices connected to MyHouseVPN">
+                    <img src="{{ url_for('static', filename='icons/vpn.svg') }}" alt="VPN Icon" class="button-icon">
+                     VPN 
+                </button>
+                <img src="{{ url_for('static', filename='icons/question.svg') }}" alt="Question Icon" class="question-icon" onclick="showAlert('Manage all your devices connected to MyHouseVPN securely.')">
+            </div>
+            <div class="button-wrapper">
+                <button onclick="openURL(8080, 'http')" title="Manage your personal cloud. Access all your files from anywhere.">
+                    <img src="{{ url_for('static', filename='icons/cloud.svg') }}" alt="Cloud Icon" class="button-icon">
+                     Cloud
+                </button>
+                <img src="{{ url_for('static', filename='icons/question.svg') }}" alt="Question Icon" class="question-icon" onclick="showAlert('Access and manage your personal cloud storage from anywhere.')">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <a href onclick="myhousevpn_web()"><img src="{{ url_for('static', filename='style/logo_v2.png') }}" alt="MyHouseVPN LOGO V2"></a>
+            <h3><p>“Securing Your Digital Future Today”</p></h3>
+        </div>
+    </footer>
+
+    <!-- Custom alert dialog -->
+    <div id="customAlert" class="custom-alert">
+        <p id="alertMessage"></p>
+        <button onclick="closeCustomAlert()">OK</button>
+    </div>
+
+    <script>
+        function toggleNav() {
+            var navbar = document.getElementById('navbar');
+            var menuIcon = document.getElementById('menu-icon');
+            var overlay = document.getElementById('overlay');
+            navbar.classList.toggle('expanded');
+            menuIcon.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        function openURL(newPort, protocol) {
+            const currentUrl = window.location.href;
+            const url = new URL(currentUrl);
+            url.protocol = protocol;
+            url.port = newPort;
+            window.open(url.toString(), '_blank');
+        }
+
+        function showAlert(message) {
+            document.getElementById('alertMessage').innerText = message;
+            document.getElementById('customAlert').style.display = 'block';
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+        }
+
+        function myhousevpn_web() {
+            window.open('https://www.myhousevpn.com/', '_blank');
+        }
+    </script>
+</body>
+</html>

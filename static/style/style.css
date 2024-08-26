@@ -1,0 +1,316 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 20px;
+    color: white;
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+    width: 100%; /* Added to ensure full width */
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.menu-icon {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 10;
+    transition: transform 0.3s;
+    margin-left: auto; /* Ensure it stays on the right */
+}
+
+.menu-icon .icon {
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s, transform 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-icon .close {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.menu-icon.open .menu {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+.menu-icon.open .close {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(59, 59, 59, 0.9); /* Strong grey background */
+    padding: 20px;
+    position: fixed;
+    top: 60px; /* Start below the h1 title */
+    right: 0;
+    width: 100%;
+    height: calc(100% - 60px); /* Adjust height to not cover the header */
+    transition: transform 0.3s;
+    transform: translateY(-100%);
+    z-index: 9;
+    align-items: center; /* Center items horizontally */
+}
+
+nav.expanded {
+    display: flex;
+    transform: translateY(0);
+}
+
+nav a {
+    display: flex; /* Changed to flex to align icon and text */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center the whole block */
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 100%; /* Ensure the link takes full width for centering */
+}
+
+nav a:hover {
+    background-color: rgb(0, 102, 255); /* Strong blue color for hover */
+}
+
+.nav-icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(211, 211, 211, 0.9); /* Light grey background with enough opacity */
+    z-index: 8;
+}
+
+.overlay.active {
+    display: block;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.button-wrapper {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    position: relative; /* Positioning context for the question icon */
+    margin-bottom: 20px; /* Add some space below each button wrapper */
+}
+
+button {
+    flex: 1; /* Makes all buttons in .button-wrapper take the same width */
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    background-color: hsl(295, 98%, 48%);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex; /* Align icon and text */
+    align-items: center; /* Center icon and text vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Ensure the text is centered */
+}
+
+button:hover {
+    background-color: hsl(295, 98%, 40%);
+}
+
+.button-icon {
+    width: 48px; /* Adjust size as needed */
+    height: 48px; /* Adjust size as needed */
+    margin-right: 10px; /* Add space between icon and text */
+}
+
+.question-icon {
+    position: absolute;
+    top: -10px; /* Adjust to control vertical placement */
+    left: -10px; /* Adjust to control horizontal placement */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 40px;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-content img {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-end; /* Align items to the right */
+    }
+}
+
+/* Style for devices with a max-width of 600px */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        position: relative; /* Ensure the header is relative to its contents */
+    }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        width: 100%; /* Make sure it takes the full width */
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .menu-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        margin-left: auto; /* Ensure it stays on the right */
+        transform: none; /* Remove transform that could affect positioning */
+    }
+
+    nav {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .custom-alert {
+        width: 90%;
+    }
+}
+
+/* Custom alert box styles */
+.custom-alert {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-width: 90%;
+    width: 400px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.custom-alert button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: hsl(295, 98%, 48%);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-alert button:hover {
+    background-color: hsl(295, 98%, 40%);
+}

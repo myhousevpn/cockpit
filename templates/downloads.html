@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/downloads.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='style/logo.ico') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='style/logo.png') }}" alt="Logo" class="logo">
+            </a>
+            <h1>Downloads</h1>
+            <div class="menu-icon" id="menu-icon" onclick="toggleNav()">
+                <img src="{{ url_for('static', filename='icons/menu.svg') }}" alt="Menu" class="icon menu">
+                <img src="{{ url_for('static', filename='icons/close.svg') }}" alt="Close" class="icon close">
+            </div>
+        </div>
+        <nav id="navbar">
+            <a href="{{ url_for('duckdns') }}" class="text-white mr-4">
+                <img src="{{ url_for('static', filename='icons/start.svg') }}" alt="Start Icon" class="nav-icon">Getting Started
+            </a>
+            <a href="{{ url_for('downloads') }}" class="text-white">
+                <img src="{{ url_for('static', filename='icons/download.svg') }}" alt="Download Icon" class="nav-icon">Downloads
+            </a>
+            <a href="{{ url_for('vpn') }}" class="text-white">
+                <img src="{{ url_for('static', filename='icons/vpn.svg') }}" alt="VPN Icon" class="nav-icon">How to use it?
+            </a>
+        </nav>
+    </header>
+    <div class="overlay" id="overlay"></div>
+    <main>
+        <!-- Block 1: WireGuard -->
+        <div class="download-block">
+            <div class="block-header" onclick="toggleDescription('wireguard', this)">
+                <img src="{{ url_for('static', filename='style/wireguard_logo.png') }}" alt="Wireguard Logo" class="logo">
+                <span>Wireguard</span>
+                <img src="{{ url_for('static', filename='icons/arrow_down.svg') }}" alt="Arrow Down" class="arrow">
+            </div>
+            <div class="block-content" id="wireguard">
+                <p>WireGuard is an open-source software that helps you create a secure connection to the internet, like a private tunnel that hides your online activity from others. Think of it as a super simple and fast way to keep your online browsing safe and private, much like how a secure lock keeps your home safe.</p>
+                <a href="https://www.wireguard.com/install/" target="_blank">Download Wireguard</a>
+            </div>
+        </div>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+
+        <!-- Block 2: Nextcloud -->
+        <div class="download-block">
+            <div class="block-header" onclick="toggleDescription('nextcloud', this)">
+                <img src="{{ url_for('static', filename='style/nextcloud_logo.png') }}" alt="Nextcloud Logo" class="logo">
+                <span>Nextcloud</span>
+                <img src="{{ url_for('static', filename='icons/arrow_down.svg') }}" alt="Arrow Down" class="arrow">
+            </div>
+            <div class="block-content" id="nextcloud">
+                <p>Nextcloud is an open-source software that lets you create your own online storage space, like your own personal Google Drive or Dropbox. You can store, share, and access your files from anywhere, but the key difference is that you have full control over where your data is stored because it runs on your own server.</p>
+                <a href="https://nextcloud.com/install/" target="_blank">Download Nextcloud</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <a href onclick="myhousevpn_web()"><img src="{{ url_for('static', filename='style/logo_v2.png') }}" alt="MyHouseVPN LOGO V2"></a>
+            <h3><p>“Securing Your Digital Future Today”</p></h3>
+        </div>
+    </footer>
+
+    <!-- Custom alert dialog -->
+    <div id="customAlert" class="custom-alert">
+        <p id="alertMessage"></p>
+        <button onclick="closeCustomAlert()">OK</button>
+    </div>
+
+    <script>
+        function toggleNav() {
+            var navbar = document.getElementById('navbar');
+            var menuIcon = document.getElementById('menu-icon');
+            var overlay = document.getElementById('overlay');
+            navbar.classList.toggle('expanded');
+            menuIcon.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        function openURL(newPort, protocol) {
+            const currentUrl = window.location.href;
+            const url = new URL(currentUrl);
+            url.protocol = protocol;
+            url.port = newPort;
+            window.open(url.toString(), '_blank');
+        }
+
+        function showAlert(message) {
+            document.getElementById('alertMessage').innerText = message;
+            document.getElementById('customAlert').style.display = 'block';
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+        }
+
+        function myhousevpn_web() {
+            window.open('https://www.myhousevpn.com/', '_blank');
+        }
+
+        function toggleDescription(id, header) {
+            var content = document.getElementById(id);
+            content.classList.toggle('visible');
+            var arrow = header.querySelector('.arrow');
+            arrow.classList.toggle('rotate');
+        }
+    </script>
+</body>
+</html>

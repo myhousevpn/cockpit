@@ -1,0 +1,86 @@
+.download-block {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.block-header .logo {
+    width: 50px; /* Adjusted for better scaling on smaller screens */
+    height: auto;
+    margin-right: 15px;
+}
+
+.block-header span {
+    font-size: 18px; /* Adjusted for smaller screens */
+    font-weight: bold;
+    color: black;
+    flex-grow: 1;
+}
+
+.block-header .arrow {
+    width: 20px;
+    height: auto;
+    transition: transform 0.4s ease;
+    margin-left: auto;
+}
+
+.block-header .arrow.rotate {
+    transform: rotate(180deg);
+}
+
+.block-content {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.block-content.visible {
+    display: block;
+}
+
+.block-content p {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.block-content a {
+    color: hsl(295, 98%, 48%);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.block-content a:hover {
+    text-decoration: underline;
+    color: hsl(295, 98%, 40%);
+}
+
+.spacer {
+    height: 20px;
+}
+
+@media (max-width: 600px) {
+    .block-header span {
+        font-size: 16px;
+    }
+
+    .download-block {
+        padding: 15px;
+    }
+}

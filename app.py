@@ -14,8 +14,8 @@ def duckdns():
 
 @app.route('/run_script', methods=['POST'])
 def run_script():
-    new_host_subdomains = request.form['new_host_subdomains']
-    new_token = request.form['new_token']
+    new_host_subdomains = request.form['myhousevpn_host_subdomains']
+    new_token = request.form['myhousevpn_token']
     
     script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'domain_token.sh')
     
@@ -46,4 +46,4 @@ def vpn():
     return render_template('vpn.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=False)
+    app.run(host='0.0.0.0', port=80, debug=True)

@@ -61,7 +61,7 @@
                 <img src="{{ url_for('static', filename='icons/arrow_down.svg') }}" alt="Arrow Down" class="arrow">
             </div>
             <div class="block-content" id="myhousevpn">
-                <form action="/run_script" method="post" class="sign-form">
+                <form action="/run_script" method="post" class="sign-form" onsubmit="return validateDuckDNSDomain()">
                     <input type="text" id="myhousevpn_host_subdomains" name="myhousevpn_host_subdomains" title="DuckDNS Domain" placeholder="DuckDNS Domain" required><br>
                     <input type="text" id="myhousevpn_token" name="myhousevpn_token" title="DuckDNS Token" placeholder="DuckDNS Token" required><br>
                     <button type="submit" class="icon-button">
@@ -111,11 +111,26 @@
             arrow.classList.toggle('rotate');
         }
 
+        // Validate DuckDNS domain input
+        function validateDuckDNSDomain() {
+            var domainInput = document.getElementById('myhousevpn_host_subdomains').value;
+            var invalidSuffix = '.duckdns.org';
+
+            if (domainInput.includes(invalidSuffix)) {
+                showAlert('Please enter only the domain name, without ".duckdns.org".');
+                return false;  // Prevent form submission
+            }
+
+            return true;  // Allow form submission
+        }
+
+        // Show custom alert with the message
         function showAlert(message) {
             document.getElementById('alertMessage').innerText = message;
             document.getElementById('customAlert').style.display = 'block';
         }
 
+        // Close custom alert
         function closeCustomAlert() {
             document.getElementById('customAlert').style.display = 'none';
         }

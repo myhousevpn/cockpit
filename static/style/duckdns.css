@@ -87,14 +87,14 @@ body {
 }
 
 .block-content a {
-    color: hsl(295, 98%, 48%);
+    color: #003366;
     text-decoration: none;
     font-weight: bold;
 }
 
 .block-content a:hover {
     text-decoration: underline;
-    color: hsl(295, 98%, 40%);
+    color: #003366;
 }
 
 .spacer {
@@ -220,7 +220,7 @@ body {
     padding: 10px 20px;
     font-size: 1em;
     color: white;
-    background-color: hsl(295, 98%, 48%);
+    background-color: #003366;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -228,5 +228,5 @@ body {
 }
 
 .custom-alert button:hover {
-    background-color: hsl(295, 98%, 40%);
+    background-color: #002244;
 }

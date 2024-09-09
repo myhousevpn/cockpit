@@ -10,9 +10,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: white; /* Changed background to white */
     padding: 20px;
-    color: white;
+    color: #003366; /* Changed text color to #003366 */
     position: relative;
 }
 
@@ -22,7 +22,7 @@ header {
     justify-content: center;
     flex-grow: 1;
     position: relative;
-    width: 100%; /* Added to ensure full width */
+    width: 100%;
 }
 
 .logo {
@@ -48,7 +48,7 @@ h1 {
     top: 20px;
     z-index: 10;
     transition: transform 0.3s;
-    margin-left: auto; /* Ensure it stays on the right */
+    margin-left: auto;
 }
 
 .menu-icon .icon {
@@ -79,17 +79,17 @@ nav {
     display: none;
     flex-direction: column;
     gap: 10px;
-    background-color: rgba(59, 59, 59, 0.9); /* Strong grey background */
+    background-color: rgba(59, 59, 59, 0.9);
     padding: 20px;
     position: fixed;
-    top: 60px; /* Start below the h1 title */
+    top: 60px;
     right: 0;
     width: 100%;
-    height: calc(100% - 60px); /* Adjust height to not cover the header */
+    height: calc(100% - 60px);
     transition: transform 0.3s;
     transform: translateY(-100%);
     z-index: 9;
-    align-items: center; /* Center items horizontally */
+    align-items: center;
 }
 
 nav.expanded {
@@ -98,19 +98,19 @@ nav.expanded {
 }
 
 nav a {
-    display: flex; /* Changed to flex to align icon and text */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center the whole block */
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Changed text color to #003366 */
     text-decoration: none;
     padding: 10px;
     transition: background-color 0.3s;
     text-align: center;
-    width: 100%; /* Ensure the link takes full width for centering */
+    width: 100%;
 }
 
 nav a:hover {
-    background-color: rgb(0, 102, 255); /* Strong blue color for hover */
+    background-color: rgb(0, 102, 255);
 }
 
 .nav-icon {
@@ -126,7 +126,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(211, 211, 211, 0.9); /* Light grey background with enough opacity */
+    background-color: rgba(211, 211, 211, 0.9);
     z-index: 8;
 }
 
@@ -149,41 +149,41 @@ main {
 
 .button-wrapper {
     display: flex;
-    align-items: center; /* Center items vertically */
-    position: relative; /* Positioning context for the question icon */
-    margin-bottom: 20px; /* Add some space below each button wrapper */
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 button {
-    flex: 1; /* Makes all buttons in .button-wrapper take the same width */
+    flex: 1;
     padding: 15px 30px;
     font-size: 1.2em;
-    color: white;
-    background-color: hsl(295, 98%, 48%);
+    color: white; /* Keep text color white */
+    background-color: #003366; /* Changed button color to #003366 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    display: flex; /* Align icon and text */
-    align-items: center; /* Center icon and text vertically */
-    justify-content: center; /* Center content horizontally */
-    text-align: center; /* Ensure the text is centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 button:hover {
-    background-color: hsl(295, 98%, 40%);
+    background-color: #002244; /* Darkened button hover color */
 }
 
 .button-icon {
-    width: 48px; /* Adjust size as needed */
-    height: 48px; /* Adjust size as needed */
-    margin-right: 10px; /* Add space between icon and text */
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
 }
 
 .question-icon {
     position: absolute;
-    top: -10px; /* Adjust to control vertical placement */
-    left: -10px; /* Adjust to control horizontal placement */
+    top: -10px;
+    left: -10px;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -199,8 +199,8 @@ button:hover {
 }
 
 footer {
-    background-color: black;
-    color: white;
+    background-color: white; /* Changed footer background to white */
+    color: #003366; /* Changed text color to #003366 */
     text-align: center;
     padding: 40px 0;
 }
@@ -236,16 +236,15 @@ footer {
 
     nav {
         flex-direction: column;
-        align-items: flex-end; /* Align items to the right */
+        align-items: flex-end;
     }
 }
 
-/* Style for devices with a max-width of 600px */
 @media (max-width: 600px) {
     header {
         flex-direction: column;
         text-align: center;
-        position: relative; /* Ensure the header is relative to its contents */
+        position: relative;
     }
 
     .logo {
@@ -255,7 +254,7 @@ footer {
 
     .header-content {
         flex-direction: column;
-        width: 100%; /* Make sure it takes the full width */
+        width: 100%;
     }
 
     h1 {
@@ -266,8 +265,8 @@ footer {
         position: absolute;
         top: 20px;
         right: 20px;
-        margin-left: auto; /* Ensure it stays on the right */
-        transform: none; /* Remove transform that could affect positioning */
+        margin-left: auto;
+        transform: none;
     }
 
     nav {
@@ -304,7 +303,7 @@ footer {
     padding: 10px 20px;
     font-size: 1em;
     color: white;
-    background-color: hsl(295, 98%, 48%);
+    background-color: #003366; /* Changed button color to #003366 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -312,5 +311,5 @@ footer {
 }
 
 .custom-alert button:hover {
-    background-color: hsl(295, 98%, 40%);
+    background-color: #002244; /* Darkened hover color */
 }

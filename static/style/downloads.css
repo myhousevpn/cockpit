@@ -61,14 +61,14 @@
 }
 
 .block-content a {
-    color: hsl(295, 98%, 48%);
+    color: #003366;
     text-decoration: none;
     font-weight: bold;
 }
 
 .block-content a:hover {
     text-decoration: underline;
-    color: hsl(295, 98%, 40%);
+    color: #002244;
 }
 
 .spacer {

@@ -58,7 +58,7 @@
                         <img src="{{ url_for('static', filename='icons/arrow_down.svg') }}" alt="Arrow Down" class="arrow-icon">
                     </div>
                     <p id="step2" class="instruction-content">
-                        Launch the <a href="https://www.wireguard.com/install/" target="_blank">WireGuard app</a> on your smartphone, tablet, or desktop. Create a new tunnel, then import the configuration file you downloaded. Congratulations! Your device is now connected to your MyHouseVPN.
+                        Launch the <a id="wireguard-link" href="https://www.wireguard.com/install/" target="_blank">WireGuard app</a> on your smartphone, tablet, or desktop. Create a new tunnel, then import the configuration file you downloaded. Congratulations! Your device is now connected to your MyHouseVPN.
                     </p>
                 </li>
             </ol>
@@ -100,6 +100,26 @@
             url.pathname = ''; // Clear the path to keep only the base URL
             window.open(url.toString(), '_blank');
         }
+
+        // Function to detect user device and set the appropriate download link
+        function setWireGuardLink() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const wireguardLink = document.getElementById('wireguard-link');
+
+            if (/android/.test(userAgent)) {
+                // If Android device, set the link to the Google Play Store
+                wireguardLink.href = 'https://play.google.com/store/apps/details?id=com.wireguard.android&hl=en';
+            } else if (/iphone|ipad|ipod/.test(userAgent)) {
+                // If iOS device, set the link to the Apple App Store
+                wireguardLink.href = 'https://apps.apple.com/us/app/wireguard/id1441195209';
+            } else {
+                // If desktop or other devices, set the link to the official install page
+                wireguardLink.href = 'https://www.wireguard.com/install/';
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = setWireGuardLink;
     </script>
 </body>
 </html>

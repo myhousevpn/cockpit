@@ -43,25 +43,12 @@
             </div>
             <div class="block-content" id="wireguard">
                 <p>WireGuard is an open-source software that helps you create a secure connection to the internet, like a private tunnel that hides your online activity from others. Think of it as a super simple and fast way to keep your online browsing safe and private, much like how a secure lock keeps your home safe.</p>
-                <a href="https://www.wireguard.com/install/" target="_blank">Download Wireguard</a>
+                <a id="wireguard-link" href="https://www.wireguard.com/install/" target="_blank">Download Wireguard</a>
             </div>
         </div>
 
         <!-- Spacer -->
         <div class="spacer"></div>
-
-        <!-- Block 2: Nextcloud -->
-        <div class="download-block">
-            <div class="block-header" onclick="toggleDescription('nextcloud', this)">
-                <img src="{{ url_for('static', filename='style/nextcloud_logo.png') }}" alt="Nextcloud Logo" class="logo">
-                <span>Nextcloud</span>
-                <img src="{{ url_for('static', filename='icons/arrow_down.svg') }}" alt="Arrow Down" class="arrow">
-            </div>
-            <div class="block-content" id="nextcloud">
-                <p>Nextcloud is an open-source software that lets you create your own online storage space, like your own personal Google Drive or Dropbox. You can store, share, and access your files from anywhere, but the key difference is that you have full control over where your data is stored because it runs on your own server.</p>
-                <a href="https://nextcloud.com/install/" target="_blank">Download Nextcloud</a>
-            </div>
-        </div>
     </main>
     <footer>
         <div class="footer-content">
@@ -113,6 +100,26 @@
             var arrow = header.querySelector('.arrow');
             arrow.classList.toggle('rotate');
         }
+
+        // Function to detect user device and set the appropriate download link
+        function setWireGuardLink() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const wireguardLink = document.getElementById('wireguard-link');
+
+            if (/android/.test(userAgent)) {
+                // If Android device, set the link to the Google Play Store
+                wireguardLink.href = 'https://play.google.com/store/apps/details?id=com.wireguard.android&hl=en';
+            } else if (/iphone|ipad|ipod/.test(userAgent)) {
+                // If iOS device, set the link to the Apple App Store
+                wireguardLink.href = 'https://apps.apple.com/us/app/wireguard/id1441195209';
+            } else {
+                // If desktop or other devices, set the link to the official install page
+                wireguardLink.href = 'https://www.wireguard.com/install/';
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = setWireGuardLink;
     </script>
 </body>
 </html>

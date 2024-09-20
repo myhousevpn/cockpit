@@ -86,6 +86,14 @@
         <button onclick="closeCustomAlert()">OK</button>
     </div>
 
+    <!-- Loading Bar -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;"> <!-- Ensure it's hidden initially -->
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <p>Loading, please wait...</p>
+    </div>
+
     <script>
         function toggleNav() {
             var navbar = document.getElementById('navbar');
@@ -121,6 +129,7 @@
                 return false;  // Prevent form submission
             }
 
+            showLoading(); // Show loading indicator
             return true;  // Allow form submission
         }
 
@@ -133,6 +142,11 @@
         // Close custom alert
         function closeCustomAlert() {
             document.getElementById('customAlert').style.display = 'none';
+        }
+
+        // Show loading overlay
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
         }
     </script>
 </body>

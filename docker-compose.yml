@@ -1,0 +1,10 @@
+version: "1.1.0"
+services:
+  myhousevpn-ui:
+    image: myhousevpn/cockpit:latest
+    container_name: cockpit
+    ports:
+      - "80:80" # Maps port 51821 on the host to port 51821 in the container
+    restart: unless-stopped
+    environment:
+      DEBUG: "Server,SSH"

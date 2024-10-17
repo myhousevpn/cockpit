@@ -28,7 +28,7 @@ def run_script():
         os.chmod(script_path, 0o755)
     
     result = subprocess.run(
-        ['sudo', script_path, new_host_subdomains, new_token, new_host_subdomains],
+        [script_path, new_host_subdomains, new_token, new_host_subdomains],
         capture_output=True, text=True
     )
     

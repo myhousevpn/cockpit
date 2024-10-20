@@ -14,8 +14,8 @@ def duckdns():
 
 @app.route('/run_script', methods=['POST'])
 def run_script():
-    new_host_subdomains = request.form['myhousevpn_host_subdomains']
-    new_token = request.form['myhousevpn_token']
+    new_host_subdomains = request.form['myhousevpn_host_subdomains'].strip()
+    new_token = request.form['myhousevpn_token'].strip()
     
     script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'domain_token.sh')
     
@@ -28,7 +28,7 @@ def run_script():
         os.chmod(script_path, 0o755)
     
     result = subprocess.run(
-        [script_path, new_host_subdomains, new_token, new_host_subdomains],
+        ['sudo',script_path, new_host_subdomains, new_token, new_host_subdomains],
         capture_output=True, text=True
     )
     
